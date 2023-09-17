@@ -5,9 +5,10 @@ from langchain.llms import OpenAI
 # from langchain.chains.summarize import load_summarize_chain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import textwrap
-import json
-from Functions import*
 import streamlit as st
+
+import json
+from lib.Functions import*
 
 class Generator:
     def __init__(self):
