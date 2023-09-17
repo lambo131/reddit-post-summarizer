@@ -7,6 +7,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 import textwrap
 import json
 from Functions import*
+import streamlit as st
 
 class Generator:
     def __init__(self):
