@@ -113,8 +113,10 @@ st.divider()
 @st.cache_data
 def get_summary(title, text, api_key, prompt):
     # api_key for preventing caching skip method on when user change key
-    st.text("Wait for up to 20 seconds... >.<")
+    temp = st.empty()
+    temp.text("Wait for up to 20 seconds... >.<")
     summary = generator.get_summary(title, text)
+    temp.empty()
     return summary
 
 l1_1, l1_2,l1_3 = st.columns(3)
