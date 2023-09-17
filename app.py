@@ -22,4 +22,7 @@ add_page_title()  # Optional method to add title and icon to current page
 try:
     switch_page("summarizer")
 except:
-    switch_page("Summarizer")
+    try:
+        switch_page("Summarizer")
+    except:
+        switch_page("post-summarizer")
