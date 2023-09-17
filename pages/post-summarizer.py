@@ -166,6 +166,8 @@ l3_1, l3_2,l3_3 = st.columns(3)
 if l3_1.checkbox("debug"):
     st.session_state.seen_post
 
+    # st.text(scrapper/sec)
+
     st.write(f"@using admin: {generator.using_admin}")
 
     st.write(f"@apikey: {st.session_state.user_api_key}")
