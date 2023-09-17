@@ -1,5 +1,15 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
+from PIL import Image
+
+im = Image.open("./rsc/favicon.ico")
+
+st.set_page_config(
+    page_title="Reddit post summarizer",
+    page_icon=im,
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 page_text = """### How the app works (step by step)
 

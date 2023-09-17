@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 try:
     import sys
     sys.path.insert(0, ".\lib")
@@ -11,6 +12,14 @@ except:
     from lib.CommentScrape import CommentScrapper
     from lib.OutputGeneration import Generator
     from lib.Functions import *
+
+im = Image.open("./rsc/favicon.ico")
+st.set_page_config(
+    page_title="Reddit post summarizer",
+    page_icon=im,
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 if "scrapper" not in st.session_state:
     st.session_state.scrapper = CommentScrapper()
