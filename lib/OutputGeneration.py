@@ -15,8 +15,14 @@ class Generator:
         self.using_admin = False
 
     def initialize_llm(self, api_key):
-        with open("secrets.txt", "r") as file:
-            secrets = json.load(file)
+        try:
+            with open("secrets.txt", "r") as file:
+                secrets = json.load(file)
+        except:
+            secrets = {
+                'openai_api_key': st.secrets['openai_api_key'],
+                'admin_name': st.secrets['admin_name'],
+            }
         if api_key == secrets['admin_name']:
             openai_api_key = secrets['openai_api_key']
             self.using_admin = True

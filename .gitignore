@@ -4,6 +4,8 @@
 # Ignore a file named "project structure.py"
 project structure.py
 
+praw api notes.txt
+
 # Ignore files named "secrets.pkl" and "secrets.txt"
 secrets.pkl
 secrets.txt
