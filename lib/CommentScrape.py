@@ -13,9 +13,9 @@ class CommentScrapper:
                 secrets = json.load(file)
         except:
             secrets = {
-                'reddit_secret': st.secrets['openai_api_key'],
-                'client_id': st.secrets['client_id'],
-                'user_agent': st.secrets['user_agent'],
+                'reddit_secret': st.secrets["reddit_secret"],
+                'client_id': st.secrets["client_id"],
+                'user_agent': st.secrets["user_agent"],
             }
         self.secret = secrets['reddit_secret']
         self.client_id = secrets['client_id']
