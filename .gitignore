@@ -1,4 +1,9 @@
+# Ignore Jupyter Notebook files
 *.ipynb
-"project structure.py"
-"secrets.pkl"
-"secrets.txt"
+
+# Ignore a file named "project structure.py"
+project structure.py
+
+# Ignore files named "secrets.pkl" and "secrets.txt"
+secrets.pkl
+secrets.txt
