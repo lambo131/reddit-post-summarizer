@@ -1,13 +1,16 @@
-import sys
-sys.path.insert(0, ".\lib")
-
 import streamlit as st
-from Bench import Bench
-from streamlit.components.v1 import html
-
-from CommentScrape import CommentScrapper
-from OutputGeneration import Generator
-from Functions import *
+try:
+    import sys
+    sys.path.insert(0, ".\lib")
+    from Bench import Bench
+    from CommentScrape import CommentScrapper
+    from OutputGeneration import Generator
+    from Functions import *
+except:
+    from lib.Bench import Bench
+    from lib.CommentScrape import CommentScrapper
+    from lib.OutputGeneration import Generator
+    from lib.Functions import *
 
 if "scrapper" not in st.session_state:
     st.session_state.scrapper = CommentScrapper()
