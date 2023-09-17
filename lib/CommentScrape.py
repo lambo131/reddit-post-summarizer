@@ -1,9 +1,10 @@
-from lib.Functions import str_token_count
-from Functions import*
 import praw
 from typing import List
 import json
 import streamlit as st
+
+from lib.Functions import str_token_count
+from lib.Functions import*
 
 class CommentScrapper:
     def __init__(self):
