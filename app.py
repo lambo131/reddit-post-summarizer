@@ -12,17 +12,13 @@ st.set_page_config(
 
 show_pages(
     [
-        # Page("app.py", "app"),
-        Page("pages/home.py", "Home"),
         Page("pages/post-summarizer.py", "Summarizer"),
+        Page("pages/home.py", "Home"),
     ]
 )
 add_page_title()  # Optional method to add title and icon to current page
 
 try:
-    switch_page("summarizer")
+    switch_page('Summarizer')
 except:
-    try:
-        switch_page("Summarizer")
-    except:
-        switch_page("post-summarizer")
+    switch_page('summarizer')

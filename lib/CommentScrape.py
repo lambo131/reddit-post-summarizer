@@ -168,7 +168,7 @@ class CommentScrapper:
                     terminate = True
                     break
                 try:
-                    replies = this_comment.replies
+                    foo = this_comment.replies[0]
                 except:
                     dp.dprint("")
                     continue
@@ -177,8 +177,13 @@ class CommentScrapper:
                     continue
                 
                 # add new comments to queue
-                for j, reply in enumerate(this_comment.replies):
-                    dp.dprint(f"{indent} reply # {j}") 
+                if type(this_comment.replies[0]) == praw.models.reddit.more.MoreComments:
+                    replies = this_comment.replies[0].comments(0)
+                else:
+                    replies = this_comment.replies
+                dp.dprint(f"reply type: {type(this_comment.replies[0])}")
+                for j, reply in enumerate(replies):
+                    dp.dprint(f"{indent} reply # {j+1}") 
                     reply_pos = que.pos.copy()
                     reply_pos.append(j+1)
                     queued_comment = self.MyComment(reply, reply_pos, depth)

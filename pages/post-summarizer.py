@@ -36,6 +36,7 @@ current_bench = st.session_state.current_bench
 
 
 st.header("-Post Summarizer-")
+st.write(":green[< you can find the user instruction at the home page on the left side pannel]")
 
 #--------------url enter
 preload_link = ""
@@ -115,6 +116,7 @@ def get_summary(title, text, api_key, prompt):
     # api_key for preventing caching skip method on when user change key
     temp = st.empty()
     temp.text("Wait for up to 20 seconds... >.<")
+    temp.divider()
     summary = generator.get_summary(title, text)
     temp.empty()
     return summary
