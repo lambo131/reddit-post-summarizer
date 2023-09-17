@@ -113,7 +113,9 @@ st.divider()
 @st.cache_data
 def get_summary(title, text, api_key, prompt):
     # api_key for preventing caching skip method on when user change key
-    return generator.get_summary(title, text)
+    st.text("Wait for up to 20 seconds... >.<")
+    summary = generator.get_summary(title, text)
+    return summary
 
 l1_1, l1_2,l1_3 = st.columns(3)
 l1_1.subheader("Response:")
@@ -156,11 +158,11 @@ for i, name in enumerate(buttons_list):
         st.experimental_rerun()
 
 
-#--------------dev debug option
+#--------------dev options
 st.divider()
 l3_1, l3_2,l3_3 = st.columns(3)
 if l3_1.checkbox("debug"):
-    st.session_state.seen_post
+    st.write(f"@seen post id: {st.session_state.seen_post}")
     
     #st.text("scrapper.secrets")
     #st.text(f"reddit_secret: {scrapper.secret}")
@@ -184,12 +186,12 @@ if l3_1.checkbox("debug"):
                 f"num comments: {discussion.num_comments} | "
             )
             for comment in discussion.grouped_comments:
-                pos = "comment pos in each layer: "
+                pos = "   comment hierarchy: "
                 for index in comment.pos:
-                    pos += str(index)
+                    pos += str(index)+" "
                 expander.text(pos)
 
-if l3_2.checkbox("change prompt(need to)"):
+if l3_2.checkbox("change prompt(resets to defualt when turned off)"):
     user_prompt = st.text_area('modify the prompt here:', generator.active_template,height=200)
     if user_prompt != generator.active_template:
         generator.active_template = user_prompt

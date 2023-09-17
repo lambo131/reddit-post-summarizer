@@ -50,7 +50,7 @@ class CommentScrapper:
             for comment in discussion.grouped_comments:
                 text = f"comment:\n {comment.comment.body}"
                 output+=f"{print_str_as_blocks(remove_extra_lines(text), char_limit = 70, indent=1)}\n\n"
-            output+="\n\n"+"#"*30+"\n"
+            output+="\n"+"."*60+"\n\n"
         return output
 
     def extract_text(self, discussions):

@@ -13,7 +13,8 @@ from lib.Functions import*
 class Generator:
     def __init__(self):
         self.llm = None
-        self.active_template = template_2 # just a string
+        self.default_template = template_3
+        self.active_template = self.default_template # just a string
         self.using_admin = False
 
     def initialize_llm(self, api_key):
@@ -50,7 +51,7 @@ class Generator:
         return response
 
     def reset_active_template(self):
-        self.active_template = template_2
+        self.active_template = self.default_template
 
 
 template_1 = """
@@ -71,6 +72,25 @@ Here are the comments:
 Again, output the following:
 - summary:
 - paragraph highlighting different opinions:
+- reflection:"""
+
+template_3 = """Generate a information summary of a Reddit post called "{title}" based on all the comments. 
+The overview should include a summary and a reflection.
+
+For the summary, write a point-form summary of the discussion. 
+- Help me get a comprehensive understanding of the key points of discussion. 
+- When you mention post-specific nouns and words, you should explain clearly what they mean in context.
+- Reference the discussion number if possible.
+
+For the reflection, write a reflection after reading the discussion. 
+- Be a reading mentor for me. Analyze the discussion critically.
+- Provide unique and insightful opinions of the discussion. Critique biases and highlight high quality arguments.
+
+Here are the comments:
+{discussion}
+
+Output the following response in markdown format.
+- summary:
 - reflection:"""
 
 template_3 ="""Generate a one sentence overview of a Reddit post called "{title}" based on all the comments. 
