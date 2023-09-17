@@ -93,7 +93,7 @@ Output the following response in markdown format.
 - summary:
 - reflection:"""
 
-template_3 ="""Generate a one sentence overview of a Reddit post called "{title}" based on all the comments. 
+template_4 ="""Generate a one sentence overview of a Reddit post called "{title}" based on all the comments. 
 Here are the comments:
 {discussion}
 """
