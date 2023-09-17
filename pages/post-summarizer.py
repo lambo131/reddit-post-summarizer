@@ -166,7 +166,10 @@ l3_1, l3_2,l3_3 = st.columns(3)
 if l3_1.checkbox("debug"):
     st.session_state.seen_post
 
-    # st.text(scrapper/sec)
+    st.text("scrapper.secrets")
+    st.text(f"reddit_secret: {scrapper.secret}")
+    st.text(f"client_id: {scrapper.client_id}")
+    st.text(f"user_agent: {scrapper.user_agent}")
 
     st.write(f"@using admin: {generator.using_admin}")
 

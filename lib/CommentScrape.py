@@ -17,7 +17,7 @@ class CommentScrapper:
                 'client_id': st.secrets['client_id'],
                 'user_agent': st.secrets['user_agent'],
             }
-        self.secrets = secrets['reddit_secret']
+        self.secret = secrets['reddit_secret']
         self.client_id = secrets['client_id']
         self.user_agent = secrets['user_agent']
 
