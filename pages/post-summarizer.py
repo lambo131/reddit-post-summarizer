@@ -38,15 +38,11 @@ current_bench = st.session_state.current_bench
 st.header("-Post Summarizer-")
 
 #--------------url enter
-if True:
-    preload_link = ""
-    if current_bench != None:
-        preload_link = current_bench.url
-    url = st.text_input("Reddit post url",preload_link)
+preload_link = ""
+if current_bench != None:
+    preload_link = current_bench.url
+url = st.text_input("Reddit post url",preload_link)
 
-else:
-    url = current_bench.url
-    st.subheader("Post title: "+current_bench.post_title)
 
 l2_1, l2_2,l2_3 = st.columns(3)
 if l2_1.button("Load Reddit Post"):
@@ -109,7 +105,7 @@ st.write("**See selected discussion**")
 selected_discussions_view = scrapper.view_selected_discussions(selected_discussions)
 expander = st.expander("See selected discussions/comments")
 expander.text(selected_discussions_view)
-selected_discussions_view = f'<p style="color:white;">{selected_discussions_view}</p>'
+# selected_discussions_view = f'<p style="color:white;">{selected_discussions_view}</p>'
 
 
 #--------------Generate summary
@@ -165,33 +161,33 @@ st.divider()
 l3_1, l3_2,l3_3 = st.columns(3)
 if l3_1.checkbox("debug"):
     st.session_state.seen_post
-    '''
-    st.text("scrapper.secrets")
-    st.text(f"reddit_secret: {scrapper.secret}")
-    st.text(f"client_id: {scrapper.client_id}")
-    st.text(f"user_agent: {scrapper.user_agent}")
-    '''
+    
+    #st.text("scrapper.secrets")
+    #st.text(f"reddit_secret: {scrapper.secret}")
+    #st.text(f"client_id: {scrapper.client_id}")
+    #st.text(f"user_agent: {scrapper.user_agent}")
+    
     st.write(f"@using admin: {generator.using_admin}")
 
     st.write(f"@apikey: {st.session_state.user_api_key}")
     st.write("generator.active_template:")
     st.text(generator.active_template)
-    
+    expander = st.expander("view comment scrape tree")
     if current_bench != None:  
-        st.write(f"post title: {current_bench.scrapper.post_title}")
-        st.write(f"discussion len: {len(current_bench.selected_discussions)}")
-        for discussion in current_bench.selected_discussions:
-            st.write(f"new discussion---------------")
-            st.write(f"author: {discussion.author} | "+
+        expander.text(f"post title: {current_bench.scrapper.post_title}")
+        expander.text(f"discussion len: {len(selected_discussions)}")
+        for discussion in selected_discussions:
+            expander.text(f"new discussion---------------")
+            expander.text(f"author: {discussion.author} | "+
                 f"Discussion #: {discussion.discussion_num} | "+
                 f"char count: {discussion.char_count} | "+
                 f"num comments: {discussion.num_comments} | "
             )
             for comment in discussion.grouped_comments:
-                pos = ""
+                pos = "comment pos in each layer: "
                 for index in comment.pos:
                     pos += str(index)
-                st.write(pos)
+                expander.text(pos)
 
 if l3_2.checkbox("change prompt(need to)"):
     user_prompt = st.text_area('modify the prompt here:', generator.active_template,height=200)
